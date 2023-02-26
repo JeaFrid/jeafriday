@@ -1,7 +1,7 @@
 name: jeafriday
-description: A new Flutter package project.
+description: Many features come together with the JeaFriday package!
 version: 0.0.1
-homepage:
+homepage: https://github.com/JeaFrid/jeafriday.git
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
