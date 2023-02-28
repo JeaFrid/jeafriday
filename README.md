@@ -10,11 +10,14 @@
 
 - 📌 It can give a quick random value!
 
+- 📌 Widgets suitable for your projects!
+
 
 ## **All Packages!**
 * `JeaFire`
 * `JeaRandom`
 * `JeaColor`
+* `JeaWidget`
 
 ### **JeaFire**
 
@@ -28,3 +31,16 @@ It can convert a value given in hex code to a number or an RGB structure.
 
 It can return random values ​​for String and Integer types, depending on the given length.
 
+### **JeaWidget**
+
+Use this if you want to add new widgets to your app with many ready made schemes!
+
+----
+
+`JeaFire:` storeValue, getOnce, encode, decode, decodeAndTagAddEndElement, register, login, logout, getUID, isSignedIn, getProfile.
+
+`JeaColor:` hextoRgb, hextoNum.
+
+`JeaRandom:` string, integer.
+
+`JeaWidget:` JeaButton, JeaIconTitleText, JeaLoading, JeaTextField, JeaText.

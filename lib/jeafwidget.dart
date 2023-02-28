@@ -3,15 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class JeaButton extends StatelessWidget {
   final String text;
+  final Color? textColor;
   final Color? hoverColor;
   final Color? backgroundColor;
   final TextStyle? textStyle;
-  final void Function()? event;
+  final void Function()? onTap;
   final void Function()? onLongPress;
   const JeaButton({
     super.key,
     required this.text,
-    this.event,
+    this.onTap,
+    this.textColor,
     this.textStyle,
     this.hoverColor,
     this.backgroundColor,
@@ -21,7 +23,7 @@ class JeaButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: event ?? () {},
+      onTap: onTap ?? () {},
       onLongPress: onLongPress ?? () {},
       hoverColor: hoverColor ?? Colors.blue[800],
       child: Container(
@@ -32,7 +34,7 @@ class JeaButton extends StatelessWidget {
           style: textStyle ??
               GoogleFonts.poppins(
                 fontSize: 16,
-                color: Colors.white,
+                color: textColor ?? Colors.black,
               ),
         ),
       ),
@@ -43,6 +45,9 @@ class JeaButton extends StatelessWidget {
 class JeaIconTitleText extends StatelessWidget {
   final String title;
   final String subtitle;
+  final Color? titleColor;
+  final Color? subtitleColor;
+  final Color? iconColor;
   final IconData icon;
   final bool clickable;
   final TextStyle? textStyleTitle;
@@ -54,6 +59,9 @@ class JeaIconTitleText extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.icon,
+    this.iconColor,
+    this.subtitleColor,
+    this.titleColor,
     required this.clickable,
     this.textStyleSubtitle,
     this.textStyleTitle,
@@ -84,7 +92,7 @@ class JeaIconTitleText extends StatelessWidget {
               children: [
                 Icon(
                   icon,
-                  color: Colors.white,
+                  color: iconColor ?? Colors.white,
                   size: 25,
                 ),
                 const SizedBox(height: 13),
@@ -92,7 +100,7 @@ class JeaIconTitleText extends StatelessWidget {
                   title,
                   style: textStyleTitle ??
                       GoogleFonts.roboto(
-                          color: Colors.white,
+                          color: titleColor ?? Colors.white,
                           fontSize: 14,
                           fontWeight: FontWeight.w500),
                 ),
@@ -101,7 +109,7 @@ class JeaIconTitleText extends StatelessWidget {
                   subtitle,
                   style: textStyleSubtitle ??
                       GoogleFonts.roboto(
-                        color: Colors.white,
+                        color: subtitleColor ?? Colors.white,
                         fontSize: 12,
                       ),
                 ),
@@ -114,10 +122,12 @@ class JeaIconTitleText extends StatelessWidget {
 
 class JeaLoading extends StatelessWidget {
   final Color? backgroundColor;
+  final Color? progressColor;
   final String? logo;
   const JeaLoading({
     super.key,
     this.backgroundColor,
+    this.progressColor,
     this.logo,
   });
 
@@ -150,11 +160,11 @@ class JeaLoading extends StatelessWidget {
               },
             ),
             const SizedBox(height: 40),
-            const SizedBox(
+            SizedBox(
               width: 20,
               height: 20,
               child: CircularProgressIndicator(
-                color: Colors.white,
+                color: progressColor ?? Colors.white,
               ),
             ),
           ],
@@ -378,7 +388,8 @@ class JeaText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return selectable ?? false == false ? nonSelectable() : onSelectable();
+    bool selectableText = selectable ?? false;
+    return selectableText == false ? nonSelectable() : onSelectable();
   }
 
   Padding nonSelectable() {
@@ -392,7 +403,7 @@ class JeaText extends StatelessWidget {
         textAlign: textAlign ?? TextAlign.left,
         style: style ??
             TextStyle(
-              color: textColor ?? Colors.white,
+              color: textColor ?? Colors.black,
               fontWeight: fontWeight ?? FontWeight.normal,
             ),
       ),
