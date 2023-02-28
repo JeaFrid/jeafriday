@@ -18,3 +18,12 @@ It can convert a value given in hex code to a number or an RGB structure.
 
 It can return random values ​​for String and Integer types, depending on the given length.
 
+## 0.0.2
+
+## **New Packages!**
+
+* `JeaWidget`
+
+### **JeaWidget**
+
+Use this if you want to add new widgets to your app with many ready made schemes!
