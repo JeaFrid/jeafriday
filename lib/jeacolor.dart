@@ -1,4 +1,5 @@
 class JeaColor {
+  ///Converts a hex type String to an RGB type String.
   static String hextoRgb(String input) {
     String hexColor = input;
     int red = int.parse(hexColor.substring(1, 3), radix: 16);
@@ -8,6 +9,7 @@ class JeaColor {
     return "$red,$green,$blue";
   }
 
+  ///Converts a hex type String to an NUM type String.
   static String hextoNum(String input) {
     var hexCode = input;
     final buffer = StringBuffer();

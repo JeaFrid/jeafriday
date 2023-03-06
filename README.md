@@ -18,6 +18,11 @@
 * `JeaRandom`
 * `JeaColor`
 * `JeaWidget`
+* `JeaFriday`
+
+### **JeaFriday**
+
+Screen navigator, context control, getRequest operations and more!
 
 ### **JeaFire**
 
@@ -35,7 +40,11 @@ It can return random values ​​for String and Integer types, depending on the
 
 Use this if you want to add new widgets to your app with many ready made schemes!
 
+
 ----
+
+
+* `JeaFriday`: to (Navigator), back (Navigator), go (Navigator), allCloseAndGo (Navigator), getRequestContent, getRequestHeaders, getRequestExtra.
 
 `JeaFire:` storeValue, getOnce, encode, decode, decodeAndTagAddEndElement, register, login, logout, getUID, isSignedIn, getProfile.
 

@@ -47,12 +47,17 @@ class JeaFire {
     return value.split("~~!feValueIndex!~~");
   }
 
+  ///Decode a String type data encrypted with [encode] and give the tag to the final index.
   static List decodeAndTagAddEndElement(String key, String value) {
     List sendValue = value.split("~~!feValueIndex!~~");
     sendValue.add(key);
     return sendValue;
   }
 
+  ///You can use this function for a quick recording.
+  ///</br>It registers using "FirebaseAuth.instance.createUserWithEmailAndPassword()"
+  ///</br>and sends the [userDatas] list to the users reference of the Realtime Database
+  ///</br>using the "user.user!.uid" tag.
   static Future<List> register(
       String email, String password, List userDatas) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -67,6 +72,10 @@ class JeaFire {
     }
   }
 
+  ///Sign in with Firebase Auth. When the login is successful,
+  ///</br>the first item of the returned list is 1. If it fails, it returns 0.
+  ///</br>In case of success, the second item will be user.user. On failure,
+  ///</br>the second item of the list returns an error message.
   static Future<List> login(String email, String password) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     try {
@@ -78,17 +87,20 @@ class JeaFire {
     }
   }
 
+  ///Logs out of Firebase Auth.
   static logout() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     auth.signOut();
   }
 
+  ///If the user is logged in, you can request the UID using this function.
   static Future<String> getUID() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid;
     return uid;
   }
 
+  ///Queries whether Firebase Auth is logged in.
   static bool isSignedIn() {
     final FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser != null) {
@@ -98,6 +110,23 @@ class JeaFire {
     }
   }
 
+  ///Retrieves the reference from the Firebase Realtime Database.
+  ///</br>If 'fevalue' is true, it [decode]s the incoming data and returns
+  ///</br>the data in list type. If not, it returns the data directly.
+  static Future<dynamic> get(String reference, bool fevalue) async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref(reference);
+    DataSnapshot snapshot = await ref.get();
+    if (fevalue == true) {
+      return JeaFire.decode(snapshot.value.toString());
+    } else {
+      return snapshot;
+    }
+  }
+
+  ///It finds the user in the 'users' reference from the
+  ///</br>Firebase Realtime Database and returns its information
+  ///</br>as a list. In order for this function to work successfully,
+  ///</br>the user must be registered with [register].
   static Future<List> getProfile() async {
     if (JeaFire.isSignedIn()) {
       FirebaseAuth auth = FirebaseAuth.instance;

@@ -1,27 +1,41 @@
+import 'package:example/page1.dart';
 import 'package:flutter/material.dart';
 import 'package:jeafriday/jeacolor.dart';
 import 'package:jeafriday/jeafire.dart';
+import 'package:jeafriday/jeafriday.dart';
 import 'package:jeafriday/jeafwidget.dart';
 import 'package:jeafriday/jearandom.dart';
-import 'package:jeafriday/jeasync.dart';
 
 void main() {
   runApp(const JeaFridayApp());
 }
 
-class JeaFridayApp extends StatelessWidget {
+class JeaFridayApp extends StatefulWidget {
   const JeaFridayApp({Key? key}) : super(key: key);
 
+  @override
+  State<JeaFridayApp> createState() => _JeaFridayAppState();
+}
+
+final navKey = JeaFriday.navigatorKey();
+
+class _JeaFridayAppState extends State<JeaFridayApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'JeaFriday Test',
+      navigatorKey: navKey,
       home: Scaffold(
         backgroundColor: Colors.black,
         body: Center(
-          child: SingleChildScrollView(
+          child: JeaVerticalScrollView(
             child: Column(
               children: [
+                JeaHorizontalScrollView(
+                  child: Row(
+                    children: [containers()],
+                  ),
+                ),
                 //JeaFriday: JeaColor => hextoRgb example.
                 JeaText(
                   marginAll: 10,
@@ -31,6 +45,7 @@ class JeaFridayApp extends StatelessWidget {
                 ),
 
                 //JeaFriday: JeaRandom => string example.
+
                 JeaText(
                   marginAll: 10,
                   text: JeaRandom.string(10).toString(),
@@ -42,13 +57,21 @@ class JeaFridayApp extends StatelessWidget {
                   text: JeaRandom.integer(10).toString(),
                   textColor: Colors.white,
                 ),
-                JeaImageNetwork(src: "src"),
+
                 //JeaFriday: JeaFire => login example.
+                JeaButton(
+                  onTap: () => JeaFriday.to(
+                      JeaFriday.navigatorKeyContext(navKey), const Page1()),
+                  text: "Go to Page1",
+                  textColor: Colors.white,
+                ),
+
                 JeaButton(
                   onTap: () => JeaFire.login("example@gmail.com", "123456789"),
                   text: "Firebase auth login.",
                   textColor: Colors.white,
                 ),
+
                 //JeaFriday: JeaFire => register example.
                 JeaButton(
                   onTap: () => JeaFire.register(
@@ -66,87 +89,178 @@ class JeaFridayApp extends StatelessWidget {
                     textfieldController: TextEditingController(),
                     labelText: "labelText",
                     type: 1),
-                Wrap(
-                  children: const [
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: true,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                    JeaIconTitleText(
-                      title: "title",
-                      subtitle: "subtitle",
-                      icon: Icons.verified,
-                      clickable: false,
-                    ),
-                  ],
-                )
+                JeaHorizontalScrollView(
+                  child: iconTitleText(),
+                ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Row iconTitleText() {
+    return Row(
+      children: const [
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: true,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+        JeaIconTitleText(
+          title: "title",
+          subtitle: "subtitle",
+          icon: Icons.verified,
+          clickable: false,
+        ),
+      ],
+    );
+  }
+
+  Row containers() {
+    return Row(
+      children: [
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 50,
+          height: 50,
+          color: Colors.amber,
+        ),
+      ],
     );
   }
 }

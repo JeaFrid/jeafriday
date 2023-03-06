@@ -1,6 +1,7 @@
 import 'dart:math';
 
 class JeaRandom {
+  ///Generate a random String value.
   static String string(int length) {
     final List abc = [
       "a",
@@ -36,7 +37,18 @@ class JeaRandom {
     return result;
   }
 
+  ///Generate a random Integer value.
   static int integer(int length) {
     return Random().nextInt(length);
+  }
+
+  ///Generate a random Email value.
+  static String email() {
+    return "${JeaRandom.string(15)}@gmail.com";
+  }
+
+  ///Generate a random Password value.
+  static String password() {
+    return "${JeaRandom.string(1).toUpperCase()}${JeaRandom.string(3).toLowerCase()}${JeaRandom.integer(2000)}${JeaRandom.string(4).toLowerCase()}${JeaRandom.string(3).toUpperCase()}${JeaRandom.integer(99)}${JeaRandom.string(4).toLowerCase()}${JeaRandom.string(1).toUpperCase()}${JeaRandom.string(3).toLowerCase()}${JeaRandom.integer(2000)}${JeaRandom.string(4).toLowerCase()}${JeaRandom.string(3).toUpperCase()}${JeaRandom.integer(99)}${JeaRandom.string(4).toLowerCase()}";
   }
 }

@@ -1,7 +1,11 @@
 name: jeafriday
-description: Many features come together with the JeaFriday package!
-version: 0.0.2
+description: Many features come together with the JeaFriday package! Fast, practical, very simple.
+version: 0.0.3
+maintainer: JeaFriday (jeafriday@gmail.com)
 homepage: https://github.com/JeaFrid/jeafriday.git
+repository: https://github.com/JeaFrid/jeafriday
+issue_tracker: https://github.com/JeaFrid/jeafriday/issues
+
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
@@ -9,6 +13,7 @@ environment:
 
 dependencies:
   custom_selectable_text: ^0.4.0
+  dio: ^5.0.1
   firebase_auth: ^4.2.9
   firebase_core: ^2.7.0
   firebase_database: ^10.0.14

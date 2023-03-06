@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+///It creates a simple but functional button.
 class JeaButton extends StatelessWidget {
   final String text;
   final Color? textColor;
@@ -42,6 +43,7 @@ class JeaButton extends StatelessWidget {
   }
 }
 
+///It creates a very stylish widget with Icon, Title and Text. It also has a clickable feature.
 class JeaIconTitleText extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -120,6 +122,7 @@ class JeaIconTitleText extends StatelessWidget {
   }
 }
 
+///If you need a splashScreen or standby screen this is for you!
 class JeaLoading extends StatelessWidget {
   final Color? backgroundColor;
   final Color? progressColor;
@@ -174,6 +177,7 @@ class JeaLoading extends StatelessWidget {
   }
 }
 
+///Creates a framed [TextField] with everything ready.
 class JeaTextField extends StatelessWidget {
   final String labelText;
 
@@ -363,9 +367,11 @@ class JeaTextField extends StatelessWidget {
   }
 }
 
+///Creates a simple but powerful mouse-selectable [Text] widget.
 class JeaText extends StatelessWidget {
   final String text;
   final int? maxLines;
+  final double? fontSize;
   final Color? textColor;
   final Color? selectionColor;
   final bool? selectable;
@@ -373,6 +379,7 @@ class JeaText extends StatelessWidget {
   final double? marginAll;
   final TextStyle? style;
   final FontWeight? fontWeight;
+
   const JeaText({
     super.key,
     required this.text,
@@ -380,6 +387,7 @@ class JeaText extends StatelessWidget {
     this.textAlign,
     this.textColor,
     this.style,
+    this.fontSize,
     this.fontWeight,
     this.marginAll,
     this.selectionColor,
@@ -405,6 +413,7 @@ class JeaText extends StatelessWidget {
             TextStyle(
               color: textColor ?? Colors.black,
               fontWeight: fontWeight ?? FontWeight.normal,
+              fontSize: fontSize ?? 14,
             ),
       ),
     );
@@ -422,7 +431,112 @@ class JeaText extends StatelessWidget {
             TextStyle(
               color: textColor ?? Colors.white,
               fontWeight: fontWeight ?? FontWeight.normal,
+              fontSize: fontSize ?? 14,
             ),
+      ),
+    );
+  }
+}
+
+///A stylish horizontal scroll view. This widget makes your kid scrollable in style.
+class JeaHorizontalScrollView extends StatelessWidget {
+  final Widget child;
+  final bool? reverse = false;
+  final EdgeInsetsGeometry? padding;
+  final bool? primary;
+
+  final ScrollPhysics? physics;
+  final ScrollController? controller;
+  final Clip clipBehavior = Clip.hardEdge;
+  final String? restorationId;
+
+  JeaHorizontalScrollView({
+    super.key,
+    required this.child,
+    this.padding,
+    this.primary,
+    this.physics,
+    this.controller,
+    this.restorationId,
+  });
+  final localeController = ScrollController();
+  @override
+  Widget build(BuildContext context) {
+    return horizontal();
+  }
+
+  GestureDetector horizontal() {
+    return GestureDetector(
+      onHorizontalDragUpdate: (details) {
+        localeController.jumpTo(localeController.offset - details.delta.dx);
+      },
+      child: SingleChildScrollView(
+        controller: controller ?? localeController,
+        clipBehavior: clipBehavior,
+        padding: padding,
+        physics: physics,
+        primary: primary,
+        restorationId: restorationId,
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            const SizedBox(width: 10),
+            child,
+            const SizedBox(width: 10),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+///A stylish vertical scroll view. This widget makes your kid scrollable in style.
+class JeaVerticalScrollView extends StatelessWidget {
+  final Widget child;
+  final bool? reverse = false;
+  final EdgeInsetsGeometry? padding;
+  final bool? primary;
+
+  final ScrollPhysics? physics;
+  final ScrollController? controller;
+  final Clip clipBehavior = Clip.hardEdge;
+  final String? restorationId;
+
+  JeaVerticalScrollView({
+    super.key,
+    required this.child,
+    this.padding,
+    this.primary,
+    this.physics,
+    this.controller,
+    this.restorationId,
+  });
+  final localeController = ScrollController();
+  @override
+  Widget build(BuildContext context) {
+    return vertical();
+  }
+
+  GestureDetector vertical() {
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {
+        localeController.jumpTo(localeController.offset - details.delta.dy);
+      },
+      child: SingleChildScrollView(
+        controller: controller ?? localeController,
+        clipBehavior: clipBehavior,
+        padding: padding,
+        physics: physics,
+        primary: primary,
+        restorationId: restorationId,
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            child,
+            const SizedBox(height: 10),
+          ],
+        ),
       ),
     );
   }
