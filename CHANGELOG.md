@@ -41,3 +41,15 @@ Use this if you want to add new widgets to your app with many ready made schemes
 * `JeaRandom`: Random Email, Random Password.
 * `JeaFriday`: to (Navigator), back (Navigator), go (Navigator), allCloseAndGo (Navigator), getRequestContent, getRequestHeaders, getRequestExtra.
 * `JeaFire`: get.
+
+## 0.0.4
+
+## **New Packages!**
+
+* `JeaDB`
+
+### **JeaDB**
+
+Write to local database quickly and practically!
+
+* `JeaDB`: set, get, getKeys, clearAll, remove.

@@ -12,6 +12,8 @@
 
 - 📌 Widgets suitable for your projects!
 
+- 📌 Write to local database quickly and practically!
+
 
 ## **All Packages!**
 * `JeaFire`
@@ -19,10 +21,15 @@
 * `JeaColor`
 * `JeaWidget`
 * `JeaFriday`
+* `JeaDB`
 
 ### **JeaFriday**
 
 Screen navigator, context control, getRequest operations and more!
+
+### **JeaDB**
+
+Write to local database quickly and practically!
 
 ### **JeaFire**
 
@@ -44,7 +51,7 @@ Use this if you want to add new widgets to your app with many ready made schemes
 ----
 
 
-* `JeaFriday`: to (Navigator), back (Navigator), go (Navigator), allCloseAndGo (Navigator), getRequestContent, getRequestHeaders, getRequestExtra.
+`JeaFriday`: to (Navigator), back (Navigator), go (Navigator), allCloseAndGo (Navigator), getRequestContent, getRequestHeaders, getRequestExtra.
 
 `JeaFire:` storeValue, getOnce, encode, decode, decodeAndTagAddEndElement, register, login, logout, getUID, isSignedIn, getProfile.
 
@@ -52,4 +59,6 @@ Use this if you want to add new widgets to your app with many ready made schemes
 
 `JeaRandom:` string, integer.
 
-`JeaWidget:` JeaButton, JeaIconTitleText, JeaLoading, JeaTextField, JeaText.
+`JeaDB:` set, get, getKeys, clearAll, remove.
+
+`JeaWidget:` JeaButton, JeaIconTitleText, JeaLoading, JeaTextField, JeaText, JeaHorizontalScrollView, JeaVerticalScrollView.
