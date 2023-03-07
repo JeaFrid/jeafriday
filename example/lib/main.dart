@@ -1,6 +1,6 @@
-import 'package:example/page1.dart';
 import 'package:flutter/material.dart';
 import 'package:jeafriday/jeacolor.dart';
+import 'package:jeafriday/jeadb.dart';
 import 'package:jeafriday/jeafire.dart';
 import 'package:jeafriday/jeafriday.dart';
 import 'package:jeafriday/jeafwidget.dart';
@@ -18,6 +18,8 @@ class JeaFridayApp extends StatefulWidget {
 }
 
 final navKey = JeaFriday.navigatorKey();
+final controller = TextEditingController();
+String getStringValue = "";
 
 class _JeaFridayAppState extends State<JeaFridayApp> {
   @override
@@ -57,15 +59,40 @@ class _JeaFridayAppState extends State<JeaFridayApp> {
                   text: JeaRandom.integer(10).toString(),
                   textColor: Colors.white,
                 ),
+                //JeaFriday: JeaDB => got value example.
+                JeaText(
+                  marginAll: 10,
+                  text: getStringValue,
+                  textColor: Colors.white,
+                ),
 
-                //JeaFriday: JeaFire => login example.
+                //JeaFriday: JeaFriday (Navigator) => to example.
                 JeaButton(
                   onTap: () => JeaFriday.to(
                       JeaFriday.navigatorKeyContext(navKey), const Page1()),
                   text: "Go to Page1",
                   textColor: Colors.white,
                 ),
-
+//JeaFriday: JeaDB => set value example.
+                JeaButton(
+                  onTap: () async {
+                    await JeaDB.set("example", controller.text);
+                  },
+                  text: "set Value",
+                  textColor: Colors.white,
+                ),
+                //JeaFriday: JeaDB => get value example.
+                JeaButton(
+                  onTap: () async {
+                    String localever = await JeaDB.get("example");
+                    setState(() {
+                      getStringValue = localever;
+                    });
+                  },
+                  text: "get Value",
+                  textColor: Colors.white,
+                ),
+                //JeaFriday: JeaFire => login example.
                 JeaButton(
                   onTap: () => JeaFire.login("example@gmail.com", "123456789"),
                   text: "Firebase auth login.",
@@ -86,7 +113,7 @@ class _JeaFridayAppState extends State<JeaFridayApp> {
                   textColor: Colors.white,
                 ),
                 JeaTextField(
-                    textfieldController: TextEditingController(),
+                    textfieldController: controller,
                     labelText: "labelText",
                     type: 1),
                 JeaHorizontalScrollView(
@@ -262,5 +289,14 @@ class _JeaFridayAppState extends State<JeaFridayApp> {
         ),
       ],
     );
+  }
+}
+
+class Page1 extends StatelessWidget {
+  const Page1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
